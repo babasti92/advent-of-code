@@ -4,6 +4,7 @@
 package aoc;
 
 import aoc.day01.Day01;
+import aoc.day01.Day02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class App {
     static {
         DAYS = new HashMap<>();
         DAYS.put(1, new Day01());
+        DAYS.put(2, new Day02());
     }
 
     public static List<String> loadInput(int day, int part) {
@@ -39,7 +41,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        int day = 1;
+        int day = 2;
         if (args.length != 0) {
             day = Integer.parseInt(args[0]);
         }
