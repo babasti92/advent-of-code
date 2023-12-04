@@ -1,6 +1,5 @@
-package aoc.day01;
-
 import aoc.App;
+import aoc.Day02;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
