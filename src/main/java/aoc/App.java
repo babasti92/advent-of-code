@@ -3,15 +3,13 @@
  */
 package aoc;
 
-import aoc.year2023.Day01;
-import aoc.year2023.Day02;
-import aoc.year2023.Day03;
-import aoc.year2023.Day04;
+import aoc.year2024.Day01;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,13 +19,11 @@ import static java.util.stream.Collectors.toList;
 public class App {
 
     private static final Map<Integer, Day> DAYS;
+    private static final String YEAR = "year2024";
 
     static {
         DAYS = new HashMap<>();
         DAYS.put(1, new Day01());
-        DAYS.put(2, new Day02());
-        DAYS.put(3, new Day03());
-        DAYS.put(4, new Day04());
     }
 
     public static List<String> loadInput(int day, int part) {
@@ -35,7 +31,7 @@ public class App {
         if (day < 10) {
             paddedDay = "0" + day;
         }
-        String fileName = "day" + paddedDay + "part" + part + ".txt";
+        String fileName = YEAR + "/day" + paddedDay + "part" + part + ".txt";
 
         try (BufferedReader r = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(fileName)))) {
             return r.lines().collect(toList());
@@ -45,12 +41,13 @@ public class App {
     }
 
     public static void main(String[] args) {
-        int day = 4;
+        int day = Collections.max(DAYS.keySet());
+        int part = 2;
+
         if (args.length != 0) {
             day = Integer.parseInt(args[0]);
         }
 
-        int part = 2;
         if (args.length > 1) {
             part = Integer.parseInt(args[1]);
         }
