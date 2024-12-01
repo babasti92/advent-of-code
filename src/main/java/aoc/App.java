@@ -3,6 +3,11 @@
  */
 package aoc;
 
+import aoc.year2023.Day01;
+import aoc.year2023.Day02;
+import aoc.year2023.Day03;
+import aoc.year2023.Day04;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

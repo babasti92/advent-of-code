@@ -1,4 +1,6 @@
-package aoc;
+package aoc.year2023;
+
+import aoc.Day;
 
 import java.util.Arrays;
 import java.util.HashMap;

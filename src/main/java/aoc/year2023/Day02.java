@@ -1,4 +1,4 @@
-package aoc;
+package aoc.year2023;
 
 import aoc.Day;
 

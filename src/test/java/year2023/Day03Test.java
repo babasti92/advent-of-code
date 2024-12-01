@@ -1,5 +1,7 @@
+package year2023;
+
 import aoc.App;
-import aoc.Day03;
+import aoc.year2023.Day03;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
