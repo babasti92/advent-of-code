@@ -1,50 +1,60 @@
 package aoc.year2024;
 
-import java.util.Arrays;
-import java.util.List;
-
 import aoc.Day;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Day02 implements Day {
-  @Override
-  public String part1(List<String> input) {
-    var numOfSafeReports = 0;
-    input.forEach(entry -> {
-      var levels = Arrays.stream(entry.split("\\s+")).map(level -> Integer.parseInt(level)).toList();
-      if (levels.size() >= 2) {
-        if (isIncreasing(levels)) {
-
-        }
-      }
-    });
-
-    return String.valueOf(sum);
-  }
-
-  @Override
-  public String part2(List<String> input) {
-    return "";
-  }
-
-  private boolean isIncreasing(List<Integer> integers) {
-    return integers.get(1) > integers.get(0);
-  }
-
-  private boolean areNumsIncreasing(List<Integer> integers) {
-
-  }
-
-  private boolean isLevelSafe(boolean isIncreasing, List<Integer> integers) {
-    for (int i = 1; i < integers.size(); i++) {
-      var diff = integers.get(i) - integers.get(i - 1);
-      switch (isIncreasing) {
-      case true -> if (diff < 1 || diff > 3) {
-        return false;
-      }
-      case false -> if(diff)
-      }
-
+    @Override
+    public String part1(List<String> input) {
+        return String.valueOf(input.stream().filter(entry -> isLevelSafe(false, entry)).count());
     }
-    return true;
-  }
+
+    @Override
+    public String part2(List<String> input) {
+        return String.valueOf(input.stream().filter(entry -> isLevelSafe(true, entry)).count());
+    }
+
+    private boolean isLevelSafe(boolean checkAllPossibleVariations, String report) {
+        var levels = Arrays.stream(report.split("\\s+")).map(Integer::parseInt).collect(Collectors.toList());
+        if (!checkAllPossibleVariations) {
+            return checkReport(levels);
+        } else {
+            return checkAllPossibleReports(levels);
+        }
+    }
+
+    private boolean isIncreasing(List<Integer> integers) {
+        return integers.get(1) > integers.get(0);
+    }
+
+    private boolean checkReport(List<Integer> levels) {
+        var isIncreasing = isIncreasing(levels);
+        for (int i = 1; i < levels.size(); i++) {
+            var diff = levels.get(i) - levels.get(i - 1);
+            if (isIncreasing && diff < 1 || diff > 3) {
+                return false;
+            } else if (!isIncreasing && diff > -1 || diff < -3) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkAllPossibleReports(List<Integer> levels) {
+        if (checkReport(levels)) {
+            return true;
+        }
+        for (int i = 0; i < levels.size(); i++) {
+            var removedElement = levels.remove(i);
+            var validReport = checkReport(levels);
+            if (validReport) {
+                return true;
+            }
+            levels.add(i, removedElement);
+        }
+        return false;
+    }
 }
