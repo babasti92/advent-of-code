@@ -6,6 +6,7 @@ package aoc;
 import aoc.year2024.Day01;
 import aoc.year2024.Day02;
 import aoc.year2024.Day03;
+import aoc.year2024.Day04;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class App {
         DAYS.put(1, new Day01());
         DAYS.put(2, new Day02());
         DAYS.put(3, new Day03());
+        DAYS.put(4, new Day04());
     }
 
     public static List<String> loadInput(int day, int part) {
