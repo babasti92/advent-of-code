@@ -33,6 +33,6 @@ public class Day09Test {
         String result = new Day05().part2(input);
 
         // Then
-        assertEquals(String.valueOf(123), result);
+        assertEquals(String.valueOf(2858), result);
     }
 }
