@@ -31,6 +31,7 @@ public class App {
         DAYS.put(6, new Day06());
         DAYS.put(9, new Day09());
         DAYS.put(11, new Day11());
+        DAYS.put(13, new Day13());
     }
 
     public static List<String> loadInput(int day, int part) {
@@ -49,7 +50,7 @@ public class App {
 
     public static void main(String[] args) {
         int day = Collections.max(DAYS.keySet());
-        int part = 2;
+        int part = 1;
 
         if (args.length != 0) {
             day = Integer.parseInt(args[0]);
