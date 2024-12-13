@@ -73,7 +73,32 @@ public class Day10 implements Day {
 
     @Override
     public String part2(List<String> input) {
-        return "";
+        var columns = input.getFirst().length();
+        var rows = input.size();
+        var numbers = new Integer[rows][columns];
+        var currentLocs = new ArrayList<Location>();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                var currentNum = Integer.parseInt(String.valueOf(input.get(i).charAt(j)));
+                if (currentNum == 0) {
+                    currentLocs.add(new Location(i, j));
+                }
+                numbers[i][j] = currentNum;
+            }
+        }
+
+        for (int i = 1; i <= 9; i++) {
+            var possibleNextLocs = calcPossibleLocsForNextStep(currentLocs, rows, columns);
+            var validNextLocs = new ArrayList<Location>();
+            int finalI = i;
+            possibleNextLocs.forEach(loc -> {
+                if (numbers[loc.row][loc.column] == finalI) {
+                    validNextLocs.add(loc);
+                }
+            });
+            currentLocs = validNextLocs;
+        }
+        return String.valueOf(currentLocs.size());
     }
 
     private record Location(int row, int column) {

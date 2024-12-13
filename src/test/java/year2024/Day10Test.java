@@ -31,6 +31,6 @@ public class Day10Test {
         String result = new Day10().part2(input);
 
         // Then
-        assertEquals(String.valueOf(2858), result);
+        assertEquals(String.valueOf(81), result);
     }
 }
