@@ -15,7 +15,7 @@ public class Day03Test {
     @Test
     public void testPart1() {
         // Given
-        List<String> input = App.loadInput(3, 1);
+        List<String> input = App.loadInput(3);
 
         // When
         String result = new Day03().part1(input);
@@ -27,7 +27,7 @@ public class Day03Test {
     @Test
     public void testPart2() {
         // Given
-        List<String> input = App.loadInput(3, 2);
+        List<String> input = App.loadInput(3);
 
         // When
         String result = new Day03().part2(input);

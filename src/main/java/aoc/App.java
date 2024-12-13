@@ -32,12 +32,12 @@ public class App {
         DAYS.put(13, new Day13());
     }
 
-    public static List<String> loadInput(int day, int part) {
+    public static List<String> loadInput(int day) {
         String paddedDay = String.valueOf(day);
         if (day < 10) {
             paddedDay = "0" + day;
         }
-        String fileName = YEAR + "/day" + paddedDay + "part" + part + ".txt";
+        String fileName = YEAR + "/day" + paddedDay + ".txt";
 
         try (BufferedReader r = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ClassLoader.getSystemResourceAsStream(fileName))))) {
             return r.lines().collect(toList());
@@ -58,7 +58,7 @@ public class App {
             part = Integer.parseInt(args[1]);
         }
 
-        List<String> input = loadInput(day, part);
+        List<String> input = loadInput(day);
 
         String result;
         if (part == 1) {
