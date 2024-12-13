@@ -9,10 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
@@ -30,6 +27,7 @@ public class App {
         DAYS.put(5, new Day05());
         DAYS.put(6, new Day06());
         DAYS.put(9, new Day09());
+        DAYS.put(10, new Day10());
         DAYS.put(11, new Day11());
         DAYS.put(13, new Day13());
     }
@@ -41,7 +39,7 @@ public class App {
         }
         String fileName = YEAR + "/day" + paddedDay + "part" + part + ".txt";
 
-        try (BufferedReader r = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(fileName)))) {
+        try (BufferedReader r = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ClassLoader.getSystemResourceAsStream(fileName))))) {
             return r.lines().collect(toList());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
