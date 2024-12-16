@@ -30,6 +30,7 @@ public class App {
         DAYS.put(10, new Day10());
         DAYS.put(11, new Day11());
         DAYS.put(13, new Day13());
+        DAYS.put(14, new Day14());
     }
 
     public static List<String> loadInput(int day) {
